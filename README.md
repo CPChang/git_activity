@@ -6,10 +6,7 @@ Currently there are two packages which can read the .git directory and generate 
 **git for windows.** Other requirement will depends on which package using. 
 
 # Packages
-## GitStats
-<https://github.com/trybeee/GitStats>
-
-
+## [GitStats](https://github.com/trybeee/GitStats)
 
 ### Requirement
 * Python 2
@@ -21,8 +18,7 @@ Gitstats has already been included as submodule, no need to install. This batch 
 `%temp%\gitactivity\activity.html`. The folder `%temp%\gitactivity` will be completely removed and created freshly during the run, 
 
 
-## gitinspector 
-<https://github.com/ejwa/gitinspector>	
+## [gitinspector](https://github.com/ejwa/gitinspector)
 
 ### Requirement
 * gitinspector Installation (python)

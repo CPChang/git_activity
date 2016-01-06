@@ -6,29 +6,32 @@
 @echo off
 setlocal
 :: don't contaminate the PATH env
-set gitbashpath="C:\Program Files\Git\bin\sh.exe"
 
-set gitinspectorPath=%~dp0
-
+:: ================== customize path ===============================
+set gitInstallDir="C:\Program Files\Git"
 set python2path="C:\Python27\python.exe"
 set outputFolder="%temp%\gitactivity"
+:: =================================================================
+
+
+set gitbashpath="%gitInstallDir:"=%\bin\sh.exe"
 set targetGitRepo=%~f1
 
-echo %~f1
 
 :: remove the folder if exist and create a new one
 if exist %outputFolder% rmdir /s /q %outputFolder%
 mkdir %outputFolder%
+
+:: cd to the folder contain this script
+set thisFolderPath=%~dp0
+cd %thisFolderPath%
+
 
 :: need to double the back slash before pass it into bash.
 :: seems like no need to remove the double quote at all
 set python2path_Bash=%python2path:\=\\\\%
 set outputFolder_Bash=%outputFolder:\=\\\\%
 set targetGitRepo_Bash=%targetGitRepo:\=\\\\%
-
-
-:: cd to gitinspector path
-cd %gitinspectorPath%
 
 :: call the gitbash
 :: be careful this is the bash syntax

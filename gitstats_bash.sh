@@ -43,7 +43,7 @@ echo ${pythonPath}
 echo ${gitrepoPath}
 echo ${outputPath}
 
-$pythonPath GitStats-master/git-stats $outputPath $gitrepoPath 
+$pythonPath GitStats/git-stats $outputPath $gitrepoPath 
 
 echo "Wait for 5 sec"
 sleep 5

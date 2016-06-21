@@ -68,10 +68,12 @@ cmd /c  "%gitbashpath% --login -i -c "bash gitstats_bash.sh %python2path_Bash% %
 
 :: copy to output folder if needed
 :: /C Continues copying even if errors occur.
+:: /F Displays full source and destination file names while copying.
 :: /L Displays files that would be copied.
 :: /Y Suppresses prompting to confirm you want to overwrite an existing destination file.
 if not "%outputFolder%" == "%tempFolder%" (
-	xcopy %tempFolder%\* %outputFolder% /C /L /Y
+	if not exist %outputFolder%	mkdir %outputFolder%
+	xcopy "%tempFolder%\*" %outputFolder% /F /Y
 )
 
 

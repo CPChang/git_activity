@@ -3,20 +3,37 @@
 ::	2. GNUplot
 ::  [3. already included as submodule] trybeee/GitStats: https://github.com/trybeee/GitStats (There is another gitstats with all small caption)
 
-:: temporary path will be %temp%\gitactivity\[git_folder_name]
-:: For example, use .\..\Matlab, then git_folder_name will be Matlab
-:: In this case, the files from different repository will not be overwritten.
+:: Example
+:: `gitstate_cmd.bat ..\..\Matlab`
+:: `gitstate_cmd.bat ..\..\Matlab dropbox`
+:: 
+:: The difference will be the output folder. 
+::
+:: * default:                            %temp%\gitactivity\[git_folder_name]
+:: * dropbox: F:\Dropbox\Softwares_setting_sync\gitactivity\[git_folder_name]
+::
+:: The dropbox option is for those repository change rapidly, and need to be sync 
+:: across computers. For example: Matlab, cb_function
+::
+:: An additional folder for different git_folder is added, so the files from 
+:: different repository will not be overwritten.
 
 @echo off
 setlocal
 :: don't contaminate the PATH env
 
+set dropboxFolder="F:\Dropbox\Softwares_setting_sync\gitactivity\%~n1"
+set tempFolder="%temp%\gitactivity\%~n1"
 :: ================== customize path ===============================
 set gitInstallDir="C:\Program Files\Git"
 set python2path="C:\Python27\python.exe"
-set outputFolder="%temp%\gitactivity\%~n1"
 :: =================================================================
 
+if "%2" == "dropbox" (
+	set outputFolder=%dropboxFolder%
+) else (
+	set outputFolder=%tempFolder%
+)
 
 set gitbashpath="%gitInstallDir:"=%\bin\sh.exe"
 set targetGitRepo=%~f1
